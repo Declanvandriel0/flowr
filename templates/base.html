@@ -1,1 +1,36 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Flowr{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
 
+    <nav>
+        <a href="{{ url_for('index') }}" class="logo">flowr</a>
+        <div class="nav-links">
+            {% if user %}
+                <span>Hallo, {{ user.username }}</span>
+                <a href="{{ url_for('create_room') }}">Kamer aanmaken</a>
+                <a href="{{ url_for('join_room') }}">Joinen</a>
+                <a href="{{ url_for('logout') }}">Uitloggen</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Inloggen</a>
+                <a href="{{ url_for('register') }}">Registreren</a>
+            {% endif %}
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Flowr</p>
+    </footer>
+
+</body>
+</html>
