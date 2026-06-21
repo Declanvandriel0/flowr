@@ -1,1 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Registreren – Flowr{% endblock %}
 
+{% block content %}
+<div class="auth-form">
+    <h1>Account aanmaken</h1>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    <form method="POST">
+        <label>Gebruikersnaam
+            <input type="text" name="username" required>
+        </label>
+        <label>E-mail
+            <input type="email" name="email" required>
+        </label>
+        <label>Wachtwoord
+            <input type="password" name="password" required>
+        </label>
+        <button type="submit" class="btn">Registreren</button>
+    </form>
+    <p>Al een account? <a href="{{ url_for('login') }}">Log hier in</a></p>
+</div>
+{% endblock %}
